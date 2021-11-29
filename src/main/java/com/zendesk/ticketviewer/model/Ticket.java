@@ -1,21 +1,27 @@
 package com.zendesk.ticketviewer.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.ArrayList;
 
+// Model for mapping output of API to a ticket
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Ticket {
 
-    Long id;
-    String subject;
-    String type;
-    String description;
-    Long requester_id;
-    ArrayList<String> tags;
-    String updated_at;
+    private Long id;
+    private String subject;
+    private String type;
+    private String description;
+    @JsonProperty("requester_id")
+    private Long requesterId;
+    private ArrayList<String> tags;
+    @JsonProperty("updated_at")
+    private String updatedAt;
 
     public Long getId() {
+        if(this.id == null)
+            return (long)0;
         return id;
     }
 
@@ -24,6 +30,8 @@ public class Ticket {
     }
 
     public String getSubject() {
+        if(this.subject == null)
+            return "";
         return subject;
     }
 
@@ -32,6 +40,8 @@ public class Ticket {
     }
 
     public String getType() {
+        if(this.type == null)
+            return "";
         return type;
     }
 
@@ -40,6 +50,8 @@ public class Ticket {
     }
 
     public String getDescription() {
+        if(this.description == null)
+            return "";
         return description;
     }
 
@@ -47,15 +59,19 @@ public class Ticket {
         this.description = description;
     }
 
-    public Long getRequester_id() {
-        return requester_id;
+    public Long getRequesterId() {
+        if(this.requesterId == null)
+            return (long)0;
+        return requesterId;
     }
 
-    public void setRequester_id(Long requester_id) {
-        this.requester_id = requester_id;
+    public void setRequesterId(Long requesterId) {
+        this.requesterId = requesterId;
     }
 
     public ArrayList<String> getTags() {
+        if(this.tags == null)
+            return new ArrayList<>();
         return tags;
     }
 
@@ -63,11 +79,14 @@ public class Ticket {
         this.tags = tags;
     }
 
-    public String getUpdated_at() {
-        return updated_at;
+    public String getUpdatedAt() {
+        if(this.updatedAt == null)
+            return "";
+        return updatedAt;
     }
 
-    public void setUpdated_at(String updated_at) {
-        this.updated_at = updated_at;
+    public void setUpdated_at(String updatedAt) {
+        this.updatedAt = updatedAt;
     }
+
 }

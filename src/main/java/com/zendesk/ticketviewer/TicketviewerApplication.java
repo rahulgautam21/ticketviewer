@@ -1,28 +1,21 @@
 package com.zendesk.ticketviewer;
 
-import com.zendesk.ticketviewer.constants.ApplicationConstants;
-import com.zendesk.ticketviewer.logic.TicketFetcher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
+import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.core.env.Environment;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 
+// Main of application
 @SpringBootApplication
-public class TicketviewerApplication implements CommandLineRunner {
+public class TicketviewerApplication {
 
 	@Autowired
-	TicketFetcher ticketFetcher;
+	CommandLineRunner commandLineRunner;
 
 	public static void main(String[] args) {
-		SpringApplication.run(TicketviewerApplication.class, args);
+		new SpringApplicationBuilder(TicketviewerApplication.class)
+				.web(WebApplicationType.NONE).run(args);
 	}
 
-	@Override
-	public void run(String... args) throws Exception {
-		System.out.println(ApplicationConstants.API_URL);
-		System.out.println(ApplicationConstants.API_TOKEN);
-		System.out.println(ticketFetcher.fetchTickets());
-	}
 }
