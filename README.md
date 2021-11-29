@@ -72,20 +72,20 @@ From the developer guide, it is evident that we should not use basic authenticat
 querying the API we use OAuth for authentication. The API token is passed as a command line 
 argument so that the user credentials are always secure.
 
-#### Displaying tickets
+### Displaying tickets
 
 I have selected only some attributes based on their relevance for printing so that the tickets
 convey basic information and still remain concise and not cumbersome
 1. For multiple tickets I display the tickets in a tabular format with the headers - Id, Subject, Requester Id, Tags, Updated Timestamp
 2. For a singular ticket I display the ticket information in a sequential format and also add the ticket description.
 
-#### Paging
+### Paging
 
 The default page size is 25. However, it can be modified from the Application Constants file.  
 Since the API supports paging with support for the page size and the page we want to access we keep incrementing the page
 as long as the user wants to query. The user can keep pressing a key to access the next page similar to how a MAN page in UNIX works.
 
-#### Testing
+### Testing
 
 For testing, I have created test cases around cases of authentication failures, Invalid API requests and Invalid API responses
 
